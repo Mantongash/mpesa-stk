@@ -31,13 +31,16 @@ router.get("/stk", async (req, res) => {
     const options = {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token.access_token}`,
+        "Authorization": `Bearer ${token.access_token}`,
+        "content-Type":"application/json"
+        
       },
+      body:JSON.stringify(body)
     };
 
     const response = await fetch(url, options);
     const data = await response.json();
-    console.log(token)
+    console.log(token.access_token)
 
     res.status(200).json(data);
   } catch (error) {
