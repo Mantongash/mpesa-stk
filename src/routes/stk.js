@@ -27,15 +27,18 @@ router.get("/stk", async (req, res) => {
       process.env.CONSUMER_SECRET
     );
 
+
     const options = {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token.access_token}`,
       },
     };
 
     const response = await fetch(url, options);
     const data = await response.json();
+    console.log(token)
+
     res.status(200).json(data);
   } catch (error) {
     console.log(error);
