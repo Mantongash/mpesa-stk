@@ -15,7 +15,7 @@ router.get("/stk", async (req, res) => {
       PartyA: 254725020561,
       PartyB: 174379,
       PhoneNumber: 254725020561,
-      CallBackURL: "https://mydomain.com/path",
+      CallBackURL: "https://mpesa-jzlo.onrender.com/api/stk",
       AccountReference: "CompanyXLTD",
       TransactionDesc: "Payment of X",
     };
