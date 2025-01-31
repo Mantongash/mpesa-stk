@@ -50,7 +50,7 @@ router.get("/stk", async (req, res) => {
 router.post("/callback", (req, res) => {
   
 
-  console.log(console.log(req.body));
+  console.log(req.body);
 });
 
 module.exports = router;
