@@ -48,9 +48,9 @@ router.get("/stk", async (req, res) => {
 });
 
 router.post("/callback", (req, res) => {
-  const { callbackData } = req.body;
+  
 
-  console.log(callbackData);
+  console.log(console.log(req.body));
 });
 
 module.exports = router;
