@@ -15,7 +15,7 @@ router.get("/stk", async (req, res) => {
       PartyA: 254725020561,
       PartyB: 174379,
       PhoneNumber: 254725020561,
-      CallBackURL: "https://mpesa-jzlo.onrender.com/api/stk",
+      CallBackURL: "https://mpesa-jzlo.onrender.com/api/callback",
       AccountReference: "CompanyXLTD",
       TransactionDesc: "Payment of X",
     };
@@ -27,26 +27,30 @@ router.get("/stk", async (req, res) => {
       process.env.CONSUMER_SECRET
     );
 
-
     const options = {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${token.access_token}`,
-        "content-Type":"application/json"
-        
+        Authorization: `Bearer ${token.access_token}`,
+        "content-Type": "application/json",
       },
-      body:JSON.stringify(body)
+      body: JSON.stringify(body),
     };
 
     const response = await fetch(url, options);
     const data = await response.json();
-    console.log(token.access_token)
+    console.log(token.access_token);
 
     res.status(200).json(data);
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: error });
   }
+});
+
+router.post("/callback", (req, res) => {
+  const { callbackData } = req.body;
+
+  console.log(callbackData);
 });
 
 module.exports = router;
